@@ -1,0 +1,22 @@
+{
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Web Developer",
+            "author": "Samson",
+            "body": "Contrary to popular belief about"
+        },
+        {
+            "id": 2,
+            "title": "The Goat",
+            "author": "lorem Ipsum and others who have contributed to the Internet",
+            "body": "Body 2"
+        },
+        {
+            "id": 3,
+            "title": "Leo and Messi",
+            "author": "J.K.Njoroge",
+            "body": "Lorem Ipsum and others who have contributed to the Internet had played a significant role in the Internet"
+        }
+    ]
+}
