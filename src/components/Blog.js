@@ -31,4 +31,4 @@ const MyBlog = () => {
 }
 
 
-export default MyBlog
+export default MyBlog;
