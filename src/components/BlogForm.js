@@ -16,7 +16,7 @@ const BlogForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h1 className="">Your blog</h1>
-            <div className="mb-3 p-2">
+            <div className="BlogForm mb-3 p-2">
                 <label htmlFor="title" className="form-label">Title</label>
                 <input type="text" placeholder="Enter Title" className="form-control" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
