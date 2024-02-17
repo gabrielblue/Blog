@@ -1,37 +1,59 @@
+import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useState } from "react";
+import {ToastContainer , toast } from "react-toastify";
 const BlogForm = () => {
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [body, setBody] = useState('');
-    
+
+    const [data, setData] = useState(
+        {
+            title: '',
+            author: '',
+            body: ''
+        }
+    );
+
+     const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData((prev) => {
+            return { ...prev, [name]: value}
+        })
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
-        // onSave({ title, author, body });
-        setTitle('');
-        setAuthor('');
-        setBody('');
-    
+        axios.post('http://localhost:402/blogs', data)
+            .then(res => {
+                toast.success('New blog added successfully', {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoclose: 3000,
+                })
+            })
+        //.catch(err => console.log(err))
+            .catch(err => {
+            toast.error('Something went wrong while adding the blog', {
+                position: toast.POSITION.TOP_RIGHT,
+                autoclose: 3000,
+            })
+        })    
     };
+
 
     return (
         <form onSubmit={handleSubmit}>
             <h1 className="">Your blog</h1>
             <div className="BlogForm mb-3 p-2">
                 <label htmlFor="title" className="form-label">Title</label>
-                <input type="text" placeholder="Enter Title" className="form-control" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input type="text" placeholder="Enter Title" className="form-control" name="title" value={data.title} onChange={handleChange} />
             </div>
             <div className="mb-3 p-2">
                 <label htmlFor="author" className="form-label">Author</label>
-                <input type="text" className="form-control" id="author" placeholder="Enter Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+                <input type="text" className="form-control" name="author" placeholder="Enter Author" value={data.author} onChange={handleChange} />
             </div>
             <div className="mb-3 p-2">
                 <label htmlFor="body" className="form-label">Body</label>
-                <textarea className="form-control" placeholder="Enter Body" id="body" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+                <textarea className="form-control" placeholder="Enter Body" name="body" value={data.body} onChange={handleChange}></textarea>
                 </div>
             <button type="submit" className="btn btn-primary">Save Blog</button>
-            {/* <p>{title}</p>
-            <p>{author}</p>
-            <p>{body}</p> */}
+            <ToastContainer/>
         </form>
     )
     
