@@ -6,12 +6,12 @@ const UseFetch = (url) => {
     
     useEffect(() => {
         axios.get(url)
-            .then(res => [setData[res.data]])
+            .then(res => (setData(res.data)))
             .catch(err => console.log(err))
         
     }, [url])
     
-    return [data];
+    return {data};
 }
 
 export default UseFetch;

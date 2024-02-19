@@ -12,15 +12,15 @@ const BlogForm = () => {
         }
     );
 
-     const handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setData((prev) => {
-            return { ...prev, [name]: value}
-        })
-    }
+        setData(prev => ({
+            ...prev, [name]: value
+        }));
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:402/blogs', data)
+        axios.post('http://localhost:4002/blogs', data)
             .then(res => {
                 toast.success('New blog added successfully', {
                     position: toast.POSITION.TOP_RIGHT,
@@ -42,15 +42,15 @@ const BlogForm = () => {
             <h1 className="">Your blog</h1>
             <div className="BlogForm mb-3 p-2">
                 <label htmlFor="title" className="form-label">Title</label>
-                <input type="text" placeholder="Enter Title" className="form-control" name="title" value={data.title} onChange={handleChange} />
+                <input type="text" placeholder="Enter Title" className="form-control" name="title" value={data.title} onChange={handleChange} required />
             </div>
             <div className="mb-3 p-2">
                 <label htmlFor="author" className="form-label">Author</label>
-                <input type="text" className="form-control" name="author" placeholder="Enter Author" value={data.author} onChange={handleChange} />
+                <input type="text" className="form-control" name="author" placeholder="Enter Author" value={data.author} onChange={handleChange} required />
             </div>
             <div className="mb-3 p-2">
                 <label htmlFor="body" className="form-label">Body</label>
-                <textarea className="form-control" placeholder="Enter Body" name="body" value={data.body} onChange={handleChange}></textarea>
+                <textarea className="form-control" placeholder="Enter Body" name="body" value={data.body} onChange={handleChange} required></textarea>
                 </div>
             <button type="submit" className="btn btn-primary">Save Blog</button>
             <ToastContainer/>

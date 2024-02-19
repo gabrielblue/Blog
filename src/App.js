@@ -1,15 +1,13 @@
-
 import './App.css';
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
-import { BrowserRouter as Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BlogForm from './components/BlogForm';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom';
 
 function App() {
   return (
-   <BrowserRouter>
+   <Router>
     <div className="App">
       <Navbar />
       {/* <BlogForm /> */}
@@ -26,7 +24,7 @@ function App() {
             </Switch>
       </div>
       </div>
-      </BrowserRouter>
+      </Router>
   );
 }
 
