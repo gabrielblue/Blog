@@ -1,18 +1,17 @@
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom"
 import UseFetch from "./UseFetch"
 import axios from "axios";
-import { Button } from "bootstrap";
 
 
 const BlogDetails = () => {
     const { id } = useParams()
-    const { data: blogs } = UseFetch(`http://localhost:4002/blogs/` + id);
+    const { data: blogs } = UseFetch(`http://localhost:4000/blogs/` + id);
     const history = useHistory();
 
     const handleDelete = (e) => {
         e.preventDefault();
 
-        axios.delete('http://localhost:4002/blogs' + id)
+        axios.delete('http://localhost:4000/blogs/' + id)
             .then(res => {
                 alert("Blog Deleted Successfully");
                 history.push('/');
@@ -26,7 +25,7 @@ const BlogDetails = () => {
                     <h3>{blogs.title}</h3>
                     <p>Done by : {blogs.author}</p>
                     <div>{blogs.body}</div>
-                    <Button onclick={handleDelete} variant="danger" className="mt-3" type="submit">Delete</Button>
+                    <button onClick={handleDelete} variant="danger" className="mt-3" type="submit">Delete</button>
                 </article>
             )}
         </div>

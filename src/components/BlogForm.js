@@ -20,7 +20,7 @@ const BlogForm = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:4002/blogs', data)
+        axios.post('http://localhost:4000/blogs', data)
             .then(res => {
                 toast.success('New blog added successfully', {
                     position: toast.POSITION.TOP_RIGHT,
